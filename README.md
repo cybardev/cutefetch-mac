@@ -6,12 +6,12 @@
 - [Typicons](https://www.s-ings.com/typicons/)
 
 ## Installation
-```
+```sh
 brew install strafe/tap/bunnyfetch
 ```
 
 ## Usage
-```
+```sh
 $ cutefetch
 ```
 <center><img src=".github/assets/preview.png"></center>
