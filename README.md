@@ -13,7 +13,7 @@
 ```sh
 $ cutefetch
 ```
-<center><img src=".github/assets/preview.png"></center>
+<center><img src="https://imgur.com/tX8Fqt4.png"></center>
 
 ## License
 [MIT](LICENSE)
