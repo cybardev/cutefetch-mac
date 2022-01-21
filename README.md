@@ -6,9 +6,8 @@
 - [Typicons](https://www.s-ings.com/typicons/)
 
 ## Installation
-```sh
-brew install strafe/tap/bunnyfetch
-```
+1. clone the repo
+2. move the `cutefetch` script to a directory in `$PATH`
 
 ## Usage
 ```sh
