@@ -44,11 +44,19 @@ function get_wm() {
 
 # set necessary variables
 function setup_variables() {
-    readonly wmname="$(get_wm)"
-    readonly kernel="$(uname -r | cut -d '-' -f1)"
+    # symbols
+    readonly w="\xEF\x82\x8A"
+    readonly k="\xEF\x82\xAD"
+    readonly s="\xEF\x84\xA0"
+    readonly r="\xEF\x80\xBE"
+    readonly n="\xEF\x87\xAB"
+    
+    # info
+    readonly wm="$(get_wm)"
+    readonly kern="$(uname -r | cut -d '-' -f1)"
     readonly shell="$(basename "$SHELL")"
-    readonly resolution="$(system_profiler SPDisplaysDataType | grep Retina | awk '/Resolution:/ {printf $2"x"$4""}')"
-    readonly netname="$(/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport -I  | awk -F' SSID: '  '/ SSID: / {print $2}')"
+    readonly res="$(system_profiler SPDisplaysDataType | grep Retina | awk '/Resolution:/ {printf $2"x"$4""}')"
+    readonly net="$(/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport -I  | awk -F' SSID: '  '/ SSID: / {print $2}')"
 }
 
 # set the eyes, ^.^ by default for cat, . . for bunny
@@ -91,28 +99,28 @@ eyes() {
 # sysinfo with cute kitty
 kittyfetch() {
     printf '\n             %s%s%b  %s%s\n   /\_/\     %s%b  %s%s\n  ( %s%s%s )    %s%b  %s%s\n   %s>%s %s^%s %s<%s     %s%b  %s%s\n             %s%b  %s%s\n\n' \
-        "$d" "$c1" '\xEF\x82\x8A' "$t" "$wmname" \
-        "$c3" '\xEF\x82\xAD' "$t" "$kernel" \
-        "$d" "$(eyes $1)" "$t" "$c2" '\xEF\x84\xA0' "$t" "$shell" \
-        "$c1" "$t" "$c3" "$t" "$c1" "$t" "$c5" '\xEF\x80\xBE' "$t" "$resolution" \
-        "$c4" '\xEF\x87\xAB' "$t" "$netname"
+        "$d" "$c1" "$w" "$t" "$wm" \
+        "$c3" "$k" "$t" "$kern" \
+        "$d" "$(eyes $1)" "$t" "$c2" "$s" "$t" "$shell" \
+        "$c1" "$t" "$c3" "$t" "$c1" "$t" "$c5" "$r" "$t" "$res" \
+        "$c4" "$n" "$t" "$net"
 }
 
 # sysinfo with cute bunny
 bunnyfetch() {
     printf '\n             %s%s%b  %s%s\n   (\ /)     %s%b  %s%s\n   ( %s%s%s)    %s%b  %s%s\n   c(%s"%s)(%s"%s)   %s%b  %s%s\n             %s%b  %s%s\n\n' \
-        "$d" "$c1" '\xEF\x82\x8A' "$t" "$wmname" \
-        "$c3" '\xEF\x82\xAD' "$t" "$kernel" \
-        "$d" "$(eyes $1)" "$t" "$c2" '\xEF\x84\xA0' "$t" "$shell" \
-        "$c1" "$t" "$c1" "$t" "$c5" '\xEF\x80\xBE' "$t" "$resolution" \
-        "$c4" '\xEF\x87\xAB' "$t" "$netname"
+        "$d" "$c1" "$w" "$t" "$wm" \
+        "$c3" "$k" "$t" "$kern" \
+        "$d" "$(eyes $1)" "$t" "$c2" "$s" "$t" "$shell" \
+        "$c1" "$t" "$c1" "$t" "$c5" "$r" "$t" "$res" \
+        "$c4" "$n" "$t" "$net"
 }
 
 # script information
 scriptinfo() {
-    printf "cutefetch - simple colored script to display system info\n\
-        Usage: cutefetch kitty/bunny\nIf no argument is given, kitty is assumed.\n\
-        If unknown argument is given, this message is shown."
+    printf "cutefetch - simple colored script to display system info\n"
+    printf "Usage: cutefetch kitty/bunny\nIf no argument is given, kitty is assumed.\n"
+    printf "       If unknown argument is given, this message is shown.\n"
 }
 
 # print the fetch info, kitty by default, bunny otherwise
