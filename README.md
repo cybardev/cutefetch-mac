@@ -1,6 +1,11 @@
 # cutefetch
 > 🐰 macOS version of [elenapan's bunnyfetch](https://github.com/elenapan/dotfiles/blob/master/bin/bunnyfetch) with a kittyfetch twist
 
+## UPDATE (2022-01-23): the features of this script have been added to [cybardev/cutefetch](https://github.com/cybardev/cutefetch)
+> This repository will no longer be updated. Please refer to the updated repo at [cybardev/cutefetch](https://github.com/cybardev/cutefetch)
+
+---
+
 ## Dependencies
 - A [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) patched font.
 - [Typicons](https://www.s-ings.com/typicons/)
