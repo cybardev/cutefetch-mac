@@ -38,8 +38,16 @@ function get_wm() {
         *Amethyst*)  echo Amethyst ;;
         *Spectacle*) echo Spectacle ;;
         *Rectangle*) echo Rectangle ;;
-        *)           echo Quartz Compositor ;;
+        *)           echo Quartz ;;
     esac
+}
+
+function get_res() {
+    # print resolution of multiple displays, separated by commas
+    # echo "$(system_profiler SPDisplaysDataType | awk '/Resolution:/ {printf $2"x"$4"\n"}' | xargs | sed 's/ /, /g')"
+
+    # print resolution of retina display
+    echo "$(system_profiler SPDisplaysDataType | grep Retina | awk '/Resolution:/ {printf $2"x"$4"\n"}')"
 }
 
 # set necessary variables
@@ -55,7 +63,7 @@ function setup_variables() {
     readonly wm="$(get_wm)"
     readonly kern="$(uname -r | cut -d '-' -f1)"
     readonly shell="$(basename "$SHELL")"
-    readonly res="$(system_profiler SPDisplaysDataType | grep Retina | awk '/Resolution:/ {printf $2"x"$4""}')"
+    readonly res="$(get_res)"
     readonly net="$(/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport -I  | awk -F' SSID: '  '/ SSID: / {print $2}')"
 }
 
